@@ -1,0 +1,204 @@
+from random import randint
+from turtle import *
+from math import cos,pi
+
+def square(x,y,t):
+    penup()
+    goto(x,y)
+    pendown()
+    begin_fill()
+    for i in range(4):
+        forward(t)
+        right(90)
+    end_fill()
+
+
+### PARTIE 1 ###
+
+#1
+l1_1=[15,85,23,58,178,456]
+for i in range(len(l1_1)):
+    print(l1_1[i])
+for i in l1_1:
+    print(i)
+
+#2
+l1_2=[]
+for i in range(int(input("N:"))):
+    l1_2.append(randint(1,100))
+
+#3
+l1_31=[randint(1,10) for i in range(10)]
+l1_32=[]
+for i in l1_31:
+    if i %2==0:
+        l1_32.append(i)
+print(l1_32)
+
+#4
+l1_41=[54,78,32,49,21,59]
+l1_42=[]
+for i in range(len(l1_41)-1,-1,-1):
+    l1_42.append(l1_41[i])
+print(l1_42)
+
+#5
+r=-1
+l1_5=[]
+while r!=0:
+    r=int(input("Nombre entier :"))
+    if r!=0:
+        l1_5.append(r)
+print(l1_5)
+
+#6
+l1_6=[]
+c6=0
+r6=int(input("Entier N:"))
+for i in range(10):
+    l1_6.append(r6+c6)
+    c6=c6+5
+print(l1_6)
+
+#7
+n71,n72=int(input("n1")),int(input("n2"))
+l7=[]
+if n71%2!=0:
+    n71=n71+1
+if n72%2==0:
+    n72=n72+1
+for i in range(n71,n72,2):
+    l7.append(i)
+print(l7)
+
+#8
+l1_8=[]
+for i in range(10):
+    l1_8.append(randint(0,3))
+print(l1_8)
+
+#9
+l1_91=[randint(0,9) for i in range(10)]
+l1_92=[]
+for i in l1_91:
+    if i != 1:
+        l1_92.append(i)
+print("l1_91: "+str(l1_91)+"\nl1_92: "+str(l1_92))
+
+#10
+l1_101=[randint(0,9) for i in range(10)]
+l1_102=[]
+for i in l1_101:
+    if i%2 != 0:
+        l1_102.append(i)
+print("l1_101: "+str(l1_101)+"\nl1_102: "+str(l1_102))
+
+#11
+'''
+l=[0]*5
+print(l)
+
+Le programme affichera un tableau de cinq 0:
+[0,0,0,0,0]
+'''
+
+#Ex 12
+l1_12=[randint(0,100) for i in range(10)]
+mini=l1_12[0]
+maxi=l1_12[0]
+
+### Solution 1 ###
+for i in range(len(l1_12)-1):
+    if l1_12[i+1]<mini:
+        mini = l1_12[i+1]
+    elif l1_12[i+1]>maxi:
+        maxi = l1_12[i + 1]
+print("Liste: " + str(l1_12) + "\nMini: " + str(mini) + "\nMaxi: " + str(maxi) + "\nIntervalle le plus grand: " + str(maxi - mini))
+
+### Solution 2 ###
+for i in range(len(l1_12)-1):
+    mini = min(l1_12[i+1],mini)
+    maxi = max(l1_12[i + 1],maxi)
+print("Liste: " + str(l1_12) + "\nMini: " + str(mini) + "\nMaxi: " + str(maxi) + "\nIntervalle le plus grand: " + str(maxi - mini))
+
+#13
+l1_131=[i for i in range(1,101)]
+l1_132=[]
+for i in l1_131:
+    if i%3==0 and i%5==0:
+        l1_132.append("FizzBuzz")
+    elif i%3==0:
+        l1_132.append("Fizz")
+    elif i%5 == 0:
+        l1_132.append("Buzz")
+    else:
+        l1_132.append(i)
+print(l1_132)
+
+#14
+l1_14=[0,1]
+for i in range(2,int(input("N (Fibonacci). Entrez un nombre superieur ou égal a 2: "))+1):
+    l1_14.append(l1_14[i-1]+l1_14[i-2])
+print(l1_14)
+
+#15
+l1_15=[]
+for i in range(1,6):
+    l1_15.append([])
+    for j in range(1,6):
+        l1_15[i-1].append(i*j)
+print(l1_15)
+
+''' ----- PARTIE 2 ----- '''
+#1
+l2_1=[i for i in range(1,12,2)]
+print(l2_1)
+
+#2
+l2_2=[randint(0,100) for i in range(10)]
+print(l2_2)
+
+#3
+l2_3=[[i*j for j in range(1,6,1)] for i in range(1,6,1)]
+print(l2_3)
+
+#4
+l2_41=[randint(1,10) for i in range(5)]
+l2_42=[[randint(0,j) for i in range(3)]for j in l2_41]
+print(l2_42)
+
+#5
+l2_5=[cos((2*pi*i)/10) for i in range(0,11,1)]
+print(l2_5)
+
+#6
+l2_61=[randint(0,100) for i in range(10)]
+l2_62=[i for i in l2_61 if i<50]
+print(l2_62)
+
+#7
+l2_71=[randint(0,10) for i in range(10)]
+l2_72=[i**2 for i in l2_71 if i%3==0]
+print(l2_71)
+print(l2_72)
+
+#8
+l2_81=[randint(-10,10) for i in range(10)]
+l2_82=[i**2 if i >=0 else '*' for i in l2_81]
+print(l2_82)
+
+#9
+def carre():
+    return [True, False][randint(0,1)]
+
+l2_91=[[carre() for i in range(5)]for j in range(5)]
+print(l2_91)
+a,b=0,0
+for i in l2_91:
+    for j in i:
+        if j:
+            square(a, 0-b, 20)
+        a=a+20
+    a=0
+    b=b+20
+done()
