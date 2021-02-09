@@ -1,0 +1,21 @@
+def triins1(l):
+    for i in range(len(l)):
+        newIndex = i
+        while newIndex>0 and l[i]<l[newIndex-1]:
+            newIndex=newIndex-1
+        valeur = l[i]
+        for n in range(i, newIndex - 1, -1):
+            l[n] = l[n - 1]
+        l[newIndex] = valeur
+    return l
+
+def triins2(l):
+    for i in range(len(l)-1,-1,-1):
+        newIndex = i
+        while newIndex<len(l)-1 and l[i]>l[newIndex+1]:
+            newIndex=newIndex+1
+        valeur = l[i]
+        for n in range(i, newIndex):
+            l[n] = l[n + 1]
+        l[newIndex] = valeur
+    return l
