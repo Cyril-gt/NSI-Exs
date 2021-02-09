@@ -1,0 +1,43 @@
+def triselec1(l):
+    l2 = []
+    while len(l)>0:
+        imax = 0
+        for i in range(len(l)):
+            if l[imax]<l[i]:
+                imax=i
+        l2 = [l[imax]]+l2
+        l = [l[i] for i in range(len(l)) if i!=imax]
+    return l2
+
+def triselec2(l):
+    for i in range(len(l)):
+        imax=0
+        for j in range(len(l)-i):
+            if l[imax]<l[j]:
+                imax=j
+        valeur=l[imax]
+        l[imax]=l[len(l)-i]
+        l[len(l)-i]=valeur
+    return l
+
+def triselec3(l):
+    l2 = []
+    while len(l)>0:
+        imin = 0
+        for i in range(len(l)):
+            if l[imin]>l[i]:
+                imin=i
+        l2 = l2+[l[imin]]
+        l = [l[i] for i in range(len(l)) if i!=imin]
+    return l2
+
+def triselec4(l):
+    for i in range(len(l)):
+        imin=i
+        for j in range(i,len(l)):
+            if l[imin]>l[j]:
+                imin=j
+        valeur=l[imin]
+        l[imin]=l[i]
+        l[i]=valeur
+    return l
