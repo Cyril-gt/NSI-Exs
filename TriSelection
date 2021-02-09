@@ -16,8 +16,8 @@ def triselec2(l):
             if l[imax]<l[j]:
                 imax=j
         valeur=l[imax]
-        l[imax]=l[len(l)-i]
-        l[len(l)-i]=valeur
+        l[imax]=l[len(l)-1-i]
+        l[len(l)-1-i]=valeur
     return l
 
 def triselec3(l):
