@@ -49,7 +49,7 @@ def choix():
     tentatives = 1
     while v[1]<300:
         l=[randint(0,50) for i in range(10)]
-        v=triselec(l[:])
+        v=triselec(l)
         tentatives+=1
     print(v[0])
     return tentatives
