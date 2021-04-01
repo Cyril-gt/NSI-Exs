@@ -1,0 +1,55 @@
+from math import sqrt
+from random import randint
+
+def secdeg(a,b,c):
+    delta=b**2-4*a*c
+    if delta<0:
+        return ("Pas de réponse",)
+    if delta==0:
+        return (-b/(2*a),)
+    return ((-b-sqrt(delta)/(2*a)), (-b+sqrt(delta)/(2*a)))
+
+def affichage(tp):
+    if len(tp)==2:
+        compteur=0
+        if tp[0]>0:
+            compteur=compteur+1
+        if tp[1]>0:
+            compteur=compteur+1
+        print("Nous avons 2 solutions",tp[0],"et", tp[1],"|",compteur,"solution(s) positive(s)")
+    elif type(tp[0]) == float:
+        print("Nous avons 1 solution:",tp[0])
+    else:
+        print(tp[0])
+        
+def maximum(l):
+    ind=0
+    for i in range(len(l)):
+        if l[i]>l[ind]:
+            ind=i
+    return (ind, l[ind])
+
+def echange(l,i,j):
+    m = l[i]
+    l[i] = l[j]
+    l[j] = m
+    return l
+    
+def triselec(l):
+    c=0
+    for i in range(len(l), 0,-1):
+        maxi = maximum(l[0:i])
+        c = c+maxi[1]
+        echange(l,i-1,maxi[0])
+    return (l, c)
+    
+def choix():
+    l=[randint(0,50) for i in range(10)]
+    v=triselec(l)
+    tentatives = 1
+    while v[1]<300:
+        l=[randint(0,50) for i in range(10)]
+        v=triselec(l[:])
+        tentatives+=1
+    print(v[0])
+    return tentatives
