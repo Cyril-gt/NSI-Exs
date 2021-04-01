@@ -1,0 +1,53 @@
+def pays():
+    return {input("Pays :"):input("Capitale :") for x in range(5)}
+    
+def pays2():
+    d,p,c={},"",""
+    while True:
+        p=input("Pays :")
+        c=input("Capitale :")
+        if p=="" or c=="":
+            break
+        d[p]=c
+    return d
+
+def f1():
+    d1={1:"a", 2:"b", 3:"c", 4:"d"}
+    d2={}
+    for i,j in d1.items():
+        d2[i]=j
+    return d2
+    
+def f2():
+    d1={1:"a", 2:"b", 3:"c", 4:"d"}
+    d2={5:"e", 6:"f", 7:"g", 8:"h"}
+    d3={9:"i", 10:"j", 11:"k", 12:"l"}
+    dico={}
+    for d in (d1,d2,d3):
+        for clef,valeur in d.items():
+            dico[clef]=valeur
+    return dico
+    
+def nombre1(chaine):
+    d={}
+    for i in range(97,97+26):
+        c=0
+        for j in chaine:
+            if j == chr(i):
+                c+=1
+        d[chr(i)]=c
+    return d
+
+def verifNombre1(chaine):
+    d=nombre1(chaine)
+    c=0
+    maxi='a'
+    for i in d.items():
+        c+=i[1]
+        if d[maxi] < i[1]:
+            maxi= i[0]
+    return (len(chaine), c, maxi)
+    
+    
+ch="baekvamzofncknjaiodezjiclvkmdadjvjoijnckfzcjoiaqknvaejndmod"
+print(verifNombre1(ch))
