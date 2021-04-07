@@ -48,6 +48,69 @@ def verifNombre1(chaine):
             maxi= i[0]
     return (len(chaine), c, maxi)
     
-    
+def mot(chaine):
+    dico = {0: "zéro", 1: "un", 2: "deux", 3: "trois", 4: "quatre", 5: "cinq", 6: "six", 7: "sept", 8: "huit", 9: "neuf"}
+    ch=""
+    for c in chaine:
+        if c < '0' or c > '9':
+            ch+=c
+        else:
+            ch+=dico[int(c)]
+    return ch
+
+def lettre(t):
+    d={}
+    for i in t:
+        if i>='a' and i <= 'z':
+            if d.get(i) == None:
+                d[i]=1
+            else:
+                d[i]=d[i]+1
+    l=[]
+    for j in range(len(d)):
+        maxi = (0,0)
+        for i in d.items():
+            if maxi[1] < i[1]:
+                maxi = i
+        l+=[[maxi[0],maxi[1]]]
+        del(d[maxi[0]])
+    return l
+
+def occurrence(texte):
+    d={}
+    for i in texte:
+        if d.get(i) == None:
+            d[i] = 1
+        else:
+            d[i] = d[i] + 1
+    return d
+def frequence(d, n):
+    dico={}
+    for i in d.items():
+        if len(i[0])==n:
+            if dico.get(i) == None:
+                dico[i] = i[1]
+    maxi= (0,0)
+    for i in dico.items():
+        if maxi[1]< i[1]:
+            maxi = i[0]
+    return maxi
+
+def plusfreq(d, nb):
+    for i in range(1,nb):
+        f = frequence(d, i)
+        print(i,"lettres :",f[0],"avec",f[1],"fois.")
+    return ""
+
 ch="baekvamzofncknjaiodezjiclvkmdadjvjoijnckfzcjoiaqknvaejndmod"
 print(verifNombre1(ch))
+
+f=open ("AD11.txt")
+texte=f.read()
+f.close()
+print(lettre(texte))
+
+f=open ("AD1.txt")
+t=f.read().split()
+f.close()
+print(plusfreq(occurrence(t),8))
