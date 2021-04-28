@@ -1,0 +1,11 @@
+f = open("communesdefrancetest.csv", "r")
+entete = f.readline()
+ligne = f.readline()
+total=0
+while ligne != "":
+    rank,city,pop,lat,lon = ligne.split(",")
+    total+=int(pop)
+    ligne = f.readline()
+f.close()
+total=(total/60910000)*100
+print(total)
