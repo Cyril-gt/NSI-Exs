@@ -1,0 +1,45 @@
+def ex1(filename):
+    f = open(filename+".csv", "r")
+    entete = f.readline()
+    line = f.readline()
+    compteur=0
+    while line != "":
+        rank,city,pop,lat,lon = line.split(",")
+        compteur+=int(pop)
+        line = f.readline()
+    f.close()
+    return compteur
+
+def ex2():
+    f = open("gdvilleseleve.csv", "r")
+    f2 = open("gdvillestri.csv", "w")
+    entete = f.readline()
+    line = f.readline()
+    liste=[]
+    while line != "":
+        rank,city,pop,lat,lon = line.split(",")
+        if rank not in liste:
+            f2.write(line)
+        liste+=[rank]
+        line = f.readline()
+    f.close()
+    f2.close()
+
+
+def ex3(crime):
+    f = open("SacramentocrimeJanuary2006.csv", "r")
+    entete = f.readline()
+    line = f.readline()
+    compteur=0
+    while line != "":
+        cdatetime,address,district,beat,grid,crimedescr,ucr_ncic_code,latitude,longitude = line.split(",")
+        if crime in crimedescr:
+            compteur+=1
+        line = f.readline()
+    f.close()
+    return compteur
+
+print(ex1("communesdefrancetest"))
+ex2()
+print(ex1("gdvillestri"))
+print(ex3("MISSING PERSON"))
