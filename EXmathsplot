@@ -1,0 +1,24 @@
+import matplotlib.pyplot as plt
+def point(x,y):
+    fichier = open("Iris.csv", "r")
+    entete= fichier.readline()
+    ligne = fichier.readline()
+    liste = []
+    while ligne != "":
+        sepal_length,sepal_width,petal_length,petal_width,species=ligne.split(",")
+        liste.append((petal_length,petal_width,species.strip("\n")))
+        ligne = fichier.readline()
+    plt.xlabel('Petal Length')
+    plt.ylabel('Petal Width')
+    listeDistance=[]
+    for i in liste:
+        c="b"
+        if i[2]=='setosa':
+            c="g"
+        elif i[2]=='virginica':
+            c="r"
+        plt.scatter(i[0],i[1], color=c, label=i[2])
+        listeDistance.append((sqrt(abs(int(i[0])-x)+(int(i[1])-y)), i))
+    plt.show()
+    fichier.close()
+    plt.scatter(x, y, color="k", label=i[2])
