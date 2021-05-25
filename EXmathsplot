@@ -45,7 +45,7 @@ def point(x, y, k):
     noms = {'setosa': 0, 'versicolor': 0, 'virginica': 0}
     for n in dico.values():
         noms[n[0][2]] += 1
-    return maximum('setosa', 'versicolor', 'virginica', noms)
+    return maxi('setosa', 'versicolor', 'virginica', noms)
 
 
 print(point(5, 1.55, 3))
