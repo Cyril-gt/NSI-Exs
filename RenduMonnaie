@@ -1,0 +1,29 @@
+def renduMonnaie(prix, argentdonne):
+    monnaie=[200,100,50,20,10,5,2,1]
+    d={}
+    compte=0
+    while compte<(argentdonne-prix):
+        for i in monnaie:
+            if i <= argentdonne-prix-compte:
+                compte+=i
+                if i in d:
+                    d[i]+=1
+                else:
+                    d[i]=1
+                break
+    return d
+
+def renduMonnaieCentime(prix, argentdonne):
+    monnaie=[20000,10000,5000,2000,1000,500,200,100,50,20,10,5,2,1]
+    d={}
+    compte=0
+    while compte<((argentdonne*100)-(prix*100)):
+        for i in monnaie:
+            if i <= (argentdonne*100)-(prix*100)-compte:
+                compte+=i
+                if round(i/100,2) in d:
+                    d[round(i/100,2)]+=1
+                else:
+                    d[round(i/100,2)]=1
+                break
+    return d
