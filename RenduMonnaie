@@ -13,7 +13,6 @@ def renduMonnaie(prix, argentdonne):
                     else:
                         d[i]=1
                     continuer=False
-
     return d
 
 def renduMonnaieCentime(prix, argentdonne):
