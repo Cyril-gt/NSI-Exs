@@ -1,0 +1,56 @@
+def alimentLePlusLourd(p):
+    plusLourd=list(p.keys())[0]
+    for i in p.items():
+        if i[1][0]>p[plusLourd[0]][0]:
+            plusLourd=i[0]
+    return plusLourd
+def alimentLePlusLong(p):
+    plusLong=list(p.keys())[0]
+    for i in p.items():
+        if i[1][1]>p[plusLong[0]][1]:
+            plusLong=i[0]
+    return plusLong
+def alimentMeilleurRapport(p):
+    mrap=list(p.keys())[0]
+    for i in p.items():
+        if i[1][1]/i[1][0]>p[mrap[0]][1]/p[mrap[0]][0]:
+            mrap=i[0]
+    return mrap
+def total(s,p):
+    t=0
+    for i,j in s.items():
+        t+=p[i][0]*j
+    return t
+def ex1(prov, mmax):
+    sac = {n:0 for n in prov.keys()}
+    pcopie=dict(prov)
+    for i in prov.keys():
+        pl=alimentLePlusLourd(pcopie)
+        while pcopie[pl] [0]<=mmax-total(sac,prov):
+            sac[pl]+=1
+        del(pcopie[pl])
+    return sac
+def ex2(prov, mmax):
+    sac = {n:0 for n in prov.keys()}
+    pcopie=dict(prov)
+    for i in prov.keys():
+        pl=alimentLePlusLong(pcopie)
+        while pcopie[pl] [0]<=mmax-total(sac,prov):
+            sac[pl]+=1
+        del(pcopie[pl])
+    return sac
+def ex3(prov, mmax):
+    sac = {n:0 for n in prov.keys()}
+    pcopie=dict(prov)
+    for i in prov.keys():
+        mr=alimentMeilleurRapport(pcopie)
+        while pcopie[mr] [0]<=mmax-total(sac,prov):
+            sac[mr]+=1
+        del(pcopie[mr])
+    return sac
+
+provisions={"a":(6,7),"b":(5,7.5),"c":(3,5),"d":(2,2)}
+massemax=16
+print(ex1(provisions, massemax))
+print(ex2(provisions, massemax))
+print(ex3(provisions, massemax))
