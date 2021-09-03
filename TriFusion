@@ -1,0 +1,20 @@
+def fusion(liste):
+    if len(liste)<=1:
+        return liste
+    if len(liste)==2:
+        if liste[0]<liste[1]:
+            return liste
+        else:
+            return [liste[1], liste[0]]
+    f1 = fusion(liste[:(len(liste))//2])
+    f2 = fusion(liste[(len(liste))//2:len(liste)])
+    l2=[]
+    while len(f1)!=0 and len(f2)!=0:
+        if f1[0]<f2[0]:
+            l2.append(f1[0])
+            f1.remove(f1[0])
+        else:
+            l2.append(f2[0])
+            f2.remove(f2[0])
+    l2+=f1+f2
+    return l2
