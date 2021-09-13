@@ -1,0 +1,136 @@
+##EX 1:
+def PGCD(a,b) :
+    if b == 0 :
+        return b
+    while b != 0 :
+        (a,b) = (b,a%b)
+    return a
+
+def PGCDRec(a,b):
+    if b == 0:
+        return a
+    else:
+        return PGCD(b, a%b)
+
+##EX 2:
+def boucle(i,k):
+    for j in range (i+1,k):
+        print(j)
+    return
+def boucleR(i,k):
+    if i == k-1:
+        return
+    else:
+        print(i+1)
+        boucleR(i+1,k)
+
+##EX 3:
+def nbchiffre(n):
+    if str(n) == "":
+        return 0
+    return 1+nbchiffre(str(n)[1:])
+
+def nbch(n):
+    if n < 10:
+        return 1
+    else:
+        return 1+nbch(n//10)
+
+##EX 4:
+def voyelle(c):
+    v=["a","e","i","o","u","y"]
+    ch=""
+    for i in c:
+        if i not in v:
+            ch+=i
+    return ch
+
+def voyelleR(c):
+    v=["a","e","i","o","u","y"]
+    if c == "":
+        return ""
+    if c[0] not in v:
+        return c[0]+voyelleR(c[1:])
+    else:
+        return voyelleR(c[1:])
+
+##EX 5:
+
+def inverse(c):
+    if c == "":
+        return ""
+    return c[-1]+inverse(c[:-1])
+
+def palindrome(c):
+    if c == "":
+        return c
+    i = inverse(c[:-1])
+    if c[-1]+i == c:
+        return True
+    elif len(c[-1]+i)==len(c):
+        return False
+    return c[-1]+inverse(c[:-1])
+
+def palindromeSimple(c):
+    if inverse(c) == c:
+        return True
+    else:
+        return False
+
+##EX 6:
+def appartient(a, l):
+    if len(l) == 0:
+        return False
+    elif a == l[0]:
+        return True
+    else:
+        return appartient(a, l[1:])
+
+def doublon(l):
+    if l == []:
+        return l
+    li=l[:-1]
+    if appartient(l[-1], li):
+        l.remove(l[-1])
+        return doublon(l)
+    else:
+        return doublon(li)+[l[-1]]
+
+##EX 7:
+def longueur(l):
+    if l == []:
+        return 0
+    else:
+        return 1+longueur(l[1:])
+
+def moyenne(l):
+    if longueur(l)==0:
+        return 0
+    else:
+        return (l[0]+(moyenne(l[1:]))*(longueur(l)-1))/longueur(l)
+
+##EX 8:
+def somcarre(n):
+    t=0
+    for i in str(n):
+        t+=int(i)**2
+    return t
+
+def somcarreR(n):
+    nstr = str(n)
+    if nstr == "":
+        return 0
+    else:
+        return (int(nstr[0])**2)+somcarreR(nstr[1:])
+
+def hrx(n, appels):
+    sc = somcarreR(n)
+    if sc == 1:
+        return True
+    elif appels>500:
+        return False
+    else:
+        return hrx(sc, appels+1)
+
+def heureux(n):
+    return hrx(n, 0)
