@@ -1,0 +1,75 @@
+from turtle import *
+from math import floor
+
+def spirale(l, e):
+    for i in range(0, l,e):
+        forward(i)
+        left(90)
+    done()
+
+def spiraleRec(l,e,a):
+    if l<=a:
+        done()
+        return
+    a+=e
+    forward(a)
+    left(90)
+    spiraleRec(l,e,a)
+
+def carre(l):
+    for i in range(4):
+        forward(l)
+        left(90)
+
+def carremb(l, e):
+    for i in range(0, l,e*2):
+        for j in range(4):
+            forward(i)
+            left(90)
+        penup()
+        right(90)
+        for i in range(1,3):
+            forward(e)
+            right(90*i)
+        pendown()
+    done()
+
+def carrembRec(l, e, a):
+    if a>=l:
+        done()
+        return
+    carre(a)
+    a+=e*2
+    penup()
+    right(90)
+    for i in range(1, 3):
+        forward(e)
+        right(90 * i)
+    pendown()
+    carrembRec(l,e,a)
+
+def figure(l, e):
+    tot=0
+    while tot<l:
+        for i in range(e):
+            carre(e+tot)
+            tot+=1
+        penup()
+        for i in range(e):
+            carre(e+tot)
+            tot+=1
+        pendown()
+
+def figureRec(l, e, a):
+    if a>l:
+        return
+    if floor(a/e)%2==0:
+        penup()
+    else:
+        pendown()
+    carre(e+a)
+    figureRec(l,e,a+1)
+
+speed(0)
+figureRec(200, 10, 0)
+done()
