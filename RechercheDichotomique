@@ -4,5 +4,5 @@ def recherche(l, e):
     if l[len(l)//2]==e:
         return True
     if l[len(l)//2]>e:
-        return recherche(l[:(len(l)//2)], e)
-    return recherche(l[((len(l)+1)//2):], e)
+        return recherche(l[:(len(l)//2-1)], e)
+    return recherche(l[((len(l))//2+1):], e)
