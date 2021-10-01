@@ -1,0 +1,68 @@
+def somme(i,j):
+    tot=0
+    for a in range(i,j+1):
+        tot+=a
+    return tot
+
+def sommedpr(i,j):
+    if j==i:
+        return i
+    else:
+        m=(i+j)//2
+        return sommedpr(i,m)+sommedpr(m+1,j)
+
+def m(a,b):
+    if a > b:
+        return b
+    return a
+
+def minimum(l):
+    if l == []:
+        return False
+    m=l[0]
+    for i in l:
+        if m>i:
+            m=i
+    return m
+
+def minrec(l):
+    if len(l)==1:
+        return l[0]
+    return m(l[0],minrec(l[1:]))
+
+def mindpr(l):
+    if len(l)==1:
+        return l[0]
+    return m(mindpr(l[:len(l)//2]),mindpr(l[len(l)//2:]))
+
+def couper(l):
+    c = True
+    l1,l2=[],[]
+    for i in l:
+        if c:
+            l1.append(i)
+            c = False
+        else:
+            l2.append(i)
+            c=True
+    return (l1,l2)
+
+def longueur(l):
+    if l == []:
+        return 0
+    if [l[0]]==l:
+        return 1
+    c=couper(l)
+    return longueur(c[0])+longueur(c[1])
+
+def inversedpr(ch):
+    if len(ch)<=1:
+        return ch
+    return inversedpr(ch[len(ch)//2:])+inversedpr(ch[:len(ch)//2])
+
+def moyenne(l):
+    if len(l)==1:
+        return l[0]
+    l1=l[:len(l)//2]
+    l2=l[len(l)//2:]
+    return (moyenne(l1) * len(l1) + moyenne(l2) * len(l2))/len(l)
