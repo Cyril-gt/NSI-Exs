@@ -1,11 +1,6 @@
 def fusion(liste):
     if len(liste)<=1:
         return liste
-    if len(liste)==2:
-        if liste[0]<liste[1]:
-            return liste
-        else:
-            return [liste[1], liste[0]]
     f1 = fusion(liste[:(len(liste))//2])
     f2 = fusion(liste[(len(liste))//2:len(liste)])
     l2=[]
