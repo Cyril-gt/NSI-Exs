@@ -1,0 +1,10 @@
+def quicksort(l):
+    if len(l)<=1:
+        return l
+    inf,sup=[],[]
+    for i in range(1,len(l)):
+        if l[0]<l[i]:
+            sup.append(l[i])
+        else:
+            inf.append(l[i])
+    return quicksort(inf)+[l[0]]+quicksort(sup)
