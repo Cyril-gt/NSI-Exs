@@ -1,0 +1,36 @@
+class arbre:
+    def __init__(self, v):
+        self.noeud = v
+        self.gauche = None
+        self.droit = None
+
+    def ins_d(self, v):
+        if self.droit == None:
+            self.droit= arbre(v)
+
+    def ins_g(self, v):
+        if self.gauche == None:
+            self.gauche = arbre(v)
+            
+def binaire(n):
+    ch = ""
+    while n>0:
+        ch=str(n%2)+ch
+        n//=2
+    return ch
+
+def ajnoeud(a, c, curseur=0):
+    if curseur>=len(c):
+        return None
+    if c[curseur]=="0":
+        a.ins_g(c[:curseur+1])
+        ajnoeud(a.gauche, c, curseur+1)
+    if c[curseur]=="1":
+        a.ins_d(c[:curseur+1])
+        ajnoeud(a.droit, c, curseur + 1)
+
+def creearbre(l):
+    a=arbre(1)
+    for i in l:
+        ajnoeud(a, binaire(i))
+    return a
