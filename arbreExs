@@ -11,7 +11,8 @@ class arbre:
     def ins_g(self, v):
         if self.gauche == None:
             self.gauche = arbre(v)
-            
+
+### EX 3
 def binaire(n):
     ch = ""
     while n>0:
@@ -33,4 +34,27 @@ def creearbre(l):
     a=arbre(1)
     for i in l:
         ajnoeud(a, binaire(i))
+    return a
+
+### EX 4
+def profondeur(a, s):
+    if a==None:
+        return -1
+    if a.noeud == s:
+        return 1
+    else:
+        r = profondeur(a.gauche, s)
+        if r < 0:
+            r = profondeur(a.droit, s)
+        if r < 0:
+            return -1
+        return 1 + r
+
+### EX 5
+def parfait(h, a=arbre(randint(0,100))):
+    if h > 1:
+        a.ins_g(randint(0,100))
+        a.ins_d(randint(0, 100))
+        parfait(h-1,a.gauche)
+        parfait(h - 1, a.droit)
     return a
