@@ -36,7 +36,7 @@ def creearbre(l):
         ajnoeud(a, binaire(i))
     return a
 
-### EX 4
+### EX 5
 def profondeur(a, s):
     if a==None:
         return -1
@@ -50,7 +50,7 @@ def profondeur(a, s):
             return -1
         return 1 + r
 
-### EX 5
+### EX 6
 def parfait(h, a=arbre(randint(0,100))):
     if h > 1:
         a.ins_g(randint(0,100))
